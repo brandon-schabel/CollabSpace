@@ -1,1 +1,1 @@
-This is test 1. -Tori
+This is simple test 1. -Tori
