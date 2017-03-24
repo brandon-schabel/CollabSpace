@@ -33,3 +33,31 @@ MongoClient.connect(config.dburl, (err, database) => {
 app.get('/', (req, res) => {
   res.send('good job');
 });
+
+app.post('/api/newTask', (req, res)=> {
+    console.log(req.body);
+    task = req.body; // should contain taskContent, can have due date, editedDatatime, 
+    //createdByUser, can have a project attached, can contain subTaskIDs
+
+    task.taskDone = false;
+
+    post_collection.save(task, (err,result)=> {
+        if (err) return console.log(err);
+        console.log('saved to database')
+        res.send("Success");
+  });
+});
+
+app.post('/api/newSubTask', (req, res) => {
+    console.log(req.body);
+});
+
+app.post('/api/deleteTask', (req, res) => {
+
+});
+
+
+app.get('/api/getUserTasks', (req, res) => {
+
+});
+

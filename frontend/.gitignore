@@ -1,6 +1,4 @@
 .DS_Store
-docs/_book
-config.js
 node_modules/
 dist/
 npm-debug.log
