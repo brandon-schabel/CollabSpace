@@ -1,17 +1,14 @@
 
 <template>
-
-<div class="hello">
+<div class="dashboard" >
   <!-- Main Page -->
-  <div class="container">
     <h1>My Dashboard</h1>
-  </div>
 </div>
 </template>
 
 <script>
 export default {
-  name: 'hello',
+  name: 'dashboard',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
@@ -22,8 +19,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+.dashboard {
+  text-align: center;
+}
 h1{
-    margin-left: 560px;
+  color: white;
 }
 
 /*SEARCH FORM*/

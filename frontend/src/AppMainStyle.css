@@ -1,0 +1,14 @@
+.nav-styling {
+    -webkit-box-shadow: 0 8px 6px -6px #212121;
+    -moz-box-shadow: 0 8px 6px -6px #212121;
+    box-shadow: 0 8px 6px -6px #212121;
+    border: none;
+}
+
+body {
+    background-color: #424242;
+}
+
+h1 {
+    color: #FFFFFF;
+}

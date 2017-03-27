@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="dashboard">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ul>
@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: 'hello',
+  name: 'dashboard',
   data{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
     return {
       msg: 'Welcome to Your Vue.js App'{{#if_eq lintConfig "airbnb"}},{{/if_eq}}

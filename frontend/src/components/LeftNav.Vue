@@ -1,7 +1,7 @@
 <template>
 <!-- Left Nav -->
-  <div class="navbar navbar-inverse navbar-fixed-left">
-    <a class="navbar-brand" href="#">Brand</a><br>
+  <div class="navbar navbar-inverse navbar-fixed-left nav-styling">
+    <a class="navbar-brand" href="#">Collab Space</a><br>
     <ul class="nav navbar-nav">
     <li><a href="#">Dashboard</a></li>
     <li><span class="navbar-text">Projects
@@ -13,6 +13,7 @@
     <div class="nav navbar-nav" id="project-menu">
       <li><a href="#">Project1</a></li>
       <li><a href="#">Project2</a></li>
+      <li><router-link to="About">About</router-link></li>
     </div>
     </ul>
   </div>

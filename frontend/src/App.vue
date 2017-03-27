@@ -1,9 +1,18 @@
 <template>
-  <div id="app">
-    <app-leftnav></app-leftnav>
-    <app-topnav></app-topnav>
+  <div id="app" class="container-fluid">
+    <div class="row">
+      <div class="col-md-2 app-nav">
+        <app-leftnav></app-leftnav>
+      </div>
 
-    <router-view></router-view>
+      <div class="col-md-10 app-nav">
+        <app-topnav></app-topnav>
+      </div>
+
+      <div class="col-md-10">
+        <router-view></router-view>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -20,7 +29,10 @@ export default {
 }
 </script>
 
-<style>
+<style src="./AppMainStyle.css">
+/*div {
+  background-color: #34495e;
+}*/
 /*
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
