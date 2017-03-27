@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Dashboard from '@/components/Dashboard'
 // import NavBar from '@/components/NavBar'
 import About from '@/components/About'
+import Login from '@/components/Login'
+import CreateTask from '@/components/CreateTask'
 
 /* eslint-disable */
 Vue.use(Router)
@@ -16,5 +18,13 @@ export default new Router({
         path: '/about',
         name: 'About',
         component: About
+    }, {
+        path: '/login',
+        name: 'Login',
+        component: Login
+    }, {
+        path: '/createtask',
+        name: 'CreateTask',
+        component: CreateTask
     }]
 })
