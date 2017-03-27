@@ -1,17 +1,21 @@
 <template>
   <div id="app">
-    <app-navbar></app-navbar>
+    <app-leftnav></app-leftnav>
+    <app-topnav></app-topnav>
+
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import NavBar from './components/NavBar.vue'
+import TopNav from './components/TopNav.vue'
+import LeftNav from './components/LeftNav.vue'
 
 export default {
   name: 'app',
   components: {
-    'app-navbar': NavBar
+    'app-topnav': TopNav,
+    'app-leftnav': LeftNav
   }
 }
 </script>
