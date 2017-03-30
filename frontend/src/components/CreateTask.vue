@@ -57,12 +57,13 @@ export default {
       //make userTask an object
       userTasks: [],
       currentEdit: -1,
+      /*
       postData: {
-          url: 'http://127.0.0.1:3000/createTask',
+          url: 'http://127.0.0.1:3000/api/createTask',
           params:{id:id},
           //config: { headers: { Authorization: 'Bearer ' + window.sessionStorage.accessToken}}
 
-      }
+      } */
     }
   },
   methods: {
