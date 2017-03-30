@@ -5,6 +5,7 @@ import Dashboard from '@/components/Dashboard'
 import About from '@/components/About'
 import Login from '@/components/Login'
 import CreateTask from '@/components/CreateTask'
+import Register from '@/components/Register'
 
 /* eslint-disable */
 Vue.use(Router)
@@ -26,5 +27,9 @@ export default new Router({
         path: '/createtask',
         name: 'CreateTask',
         component: CreateTask
+    }, {
+        path:'/register',
+        name: 'Register',
+        component: Register
     }]
 })

@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
 
 app.post('/api/newTask', (req, res)=> {
     console.log(req.body);
-    task = req.body; // should contain taskContent, can have due date, editedDatatime, 
+    var task = req.body; // should contain taskContent, can have due date, editedDatatime, 
     //createdByUser, can have a project attached, can contain subTaskIDs
 
     task.taskDone = false;
@@ -53,8 +53,22 @@ app.post('/api/newSubTask', (req, res) => {
 });
 
 app.post('/api/deleteTask', (req, res) => {
-
+    deleteId = req.body.deleteId;
 });
+
+app.post('/deletePost/:id', (req, res) => {
+  //convert submit string id to ObjectID
+  deleteId = new MongoClient.ObjectID(req.params.id);
+  console.log(deleteId);
+
+
+  post_collection.deleteOne({'_id':deleteId}, (err, result) => {
+    console.log(result);
+    assert.equal(null, err);
+    //assert.equal(1, result.deletedCount);
+    //assert.equal is causing errors for me
+  })
+})
 
 
 app.get('/api/getUserTasks', (req, res) => {

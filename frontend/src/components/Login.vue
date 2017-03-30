@@ -46,5 +46,5 @@ export default {
 }
 </script>
 
-<style scoped src='./LoginStyle.css'>
+<style scoped src='./LoginRegisterStyle.css'>
 </style>
