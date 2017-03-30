@@ -3,7 +3,9 @@ body,html {
 }
 
 .navbar-fixed-left {
-    height: 100%;
+    position:fixed;
+    height: 100%!important;
+    width: 15%;
 }
 
 .navbar-fixed-left .navbar-nav>li {
