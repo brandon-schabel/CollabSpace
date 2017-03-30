@@ -19,20 +19,20 @@
                     <p>
                         {{taskText}}
                     </p>
-                    <button class="btn btn-default" @click="createTask()" v-if="currentEdit === -1 && this.taskText.length > 0" >Create</button>
+                    <button class="btn btn-default glyphicon glyphicon-plus" @click="createTask()" v-if="currentEdit === -1 && this.taskText.length > 0" ></button>
                     <button class="btn btn-default" @click="submitEdit(currentEdit)" v-if="currentEdit >= 0 && this.taskText.length > 0">Update</button>
                     <button class="btn btn-default" @click="cancelEdit()" v-if="currentEdit >= 0">Cancel Edit</button>
                 </div>
                 
             </div>
 
-            <div>
-                <ul>
-                    <li v-for="(task,index) in userTasks" track-by="$index">
+            <div >
+                <ul class="view-task list-group">
+                    <li class="list-group-item" v-for="(task,index) in userTasks" track-by="$index">
+                        
+                        <button class="btn btn-default glyphicon glyphicon-trash" @click="deleteTask(index)"></button>
+                        <button class="btn btn-default glyphicon glyphicon-pencil" @click="editTask(index)"></button>
                         {{task}}
-                        <!-- for the delete button make it a trashcan icon -->
-                        <button class="btn btn-default" @click="deleteTask(index)">Delete</button>
-                        <button class="btn btn-default" @click="editTask(index)">Edit</button>
                     </li>
                 </ul>
 
@@ -57,6 +57,7 @@ export default {
       //make userTask an object
       userTasks: [],
       currentEdit: -1,
+      textBeforeEdit: ''
       /*
       postData: {
           url: 'http://127.0.0.1:3000/api/createTask',
@@ -72,18 +73,23 @@ export default {
         console.log(indexInsert);
         this.currentEdit = -1;
         this.userTasks.splice(indexInsert, 0, this.taskText);
-        this.taskText = '';
+        if(this.textBeforeEdit.length > 0) {
+            this.taskText = this.textBeforeEdit;
+        } else {
+            this.taskText = '';
+        }
     },
 
     editTask(index) {
         console.log(index);
+        this.textBeforeEdit = this.taskText;
         this.taskText = this.userTasks[index];
         this.currentEdit = index;
         console.log(this.currentEdit);
     },
 
     cancelEdit() {
-        this.taskText = '';
+        this.taskText = this.textBeforeEdit;
         this.currentEdit = -1;
     },
     
@@ -96,8 +102,9 @@ export default {
 
     createTask () {
         var vm = this;
-        vm.userTasks.push(vm.taskText);
-        vm.taskText = '';
+        this.userTasks.push(vm.taskText);
+        this.taskText = '';
+        this.textBeforeEdit = '';
         
         console.log(this.taskText);
 
