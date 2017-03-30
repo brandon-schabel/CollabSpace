@@ -9,6 +9,8 @@
         <app-topnav></app-topnav>
       </div>
 
+      <div class="col-md-2"></div>
+      
       <div class="col-md-10">
         <router-view></router-view>
       </div>

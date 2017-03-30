@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
   res.send('good job');
 });
 
-app.post('/api/newTask', (req, res)=> {
+app.post('/api/createTask', (req, res)=> {
     console.log(req.body);
     var task = req.body; // should contain taskContent, can have due date, editedDatatime, 
     //createdByUser, can have a project attached, can contain subTaskIDs
@@ -48,7 +48,7 @@ app.post('/api/newTask', (req, res)=> {
   });
 });
 
-app.post('/api/newSubTask', (req, res) => {
+app.post('/api/createSubTask', (req, res) => {
     console.log(req.body);
 });
 

@@ -1,6 +1,6 @@
 <template>
     <div class="container login-form align-middle" >\
-        <div class="col-md-3">
+        <div class="col-md-4">
         </div>
         <div class="col-md-4">
             <div class="login-panel panel panel-default">
@@ -58,6 +58,6 @@ export default {
   }
 }
 </script>
-<style scoped src='./LoginRegisterStyle.css'>
+<style scoped src='./FormStyle.css'>
 </style>
 
