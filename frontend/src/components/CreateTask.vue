@@ -19,22 +19,36 @@
                     <p>
                         {{taskText}}
                     </p>
-                    <button class="btn btn-default glyphicon glyphicon-plus" @click="createTask()" v-if="currentEdit === -1 && this.taskText.length > 0" ></button>
-                    <button class="btn btn-default" @click="submitEdit(currentEdit)" v-if="currentEdit >= 0 && this.taskText.length > 0">Update</button>
-                    <button class="btn btn-default" @click="cancelEdit()" v-if="currentEdit >= 0">Cancel Edit</button>
+                    <transition name="fade">
+                        <button class="btn btn-default glyphicon glyphicon-plus" @click="createTask()" v-if="currentEdit === -1 && this.taskText.length > 0" ></button>
+                    </transition>
+                    <transition name="fade">
+                        <button class="btn btn-default" @click="submitEdit(currentEdit)" v-if="currentEdit >= 0 && this.taskText.length > 0">Update</button>
+                    </transition>
+                    <transition name="fade">
+                        <button class="btn btn-default" @click="cancelEdit()" v-if="currentEdit >= 0">Cancel Edit</button>
+                    </transition>
                 </div>
                 
             </div>
 
             <div >
                 <ul class="view-task list-group">
-                    <li class="list-group-item" v-for="(task,index) in userTasks" track-by="$index">
-                        
-                        <button class="btn btn-default glyphicon glyphicon-trash" @click="deleteTask(index)"></button>
-                        <button class="btn btn-default glyphicon glyphicon-pencil" @click="editTask(index)"></button>
-                        {{task}}
-                    </li>
+                    <transition-group name="fade">
+                        <li class="list-group-item" v-for="(task,index) in userTasks" :key="index">
+                            
+                            <button class="btn btn-default glyphicon glyphicon-trash" @click="deleteTask(index)"></button>
+                            <button class="btn btn-default glyphicon glyphicon-pencil" @click="editTask(index)"></button>
+                            {{task}}
+                        </li>
+                    </transition-group>
                 </ul>
+                <button v-on:click="show = !show">
+    Toggle
+  </button>
+  <transition name="fade">
+    <p v-if="show">hello</p>
+  </transition>
 
             </div>
 
@@ -57,7 +71,8 @@ export default {
       //make userTask an object
       userTasks: [],
       currentEdit: -1,
-      textBeforeEdit: ''
+      textBeforeEdit: '',
+      show: true
       /*
       postData: {
           url: 'http://127.0.0.1:3000/api/createTask',
