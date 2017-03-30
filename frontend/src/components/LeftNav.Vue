@@ -15,6 +15,7 @@
       <li><a href="#">Project2</a></li>
       <li><router-link to="About">About</router-link></li>
       <li><router-link to="Login">Login</router-link></li>
+      <li><router-link to="Register">Register</router-link></li>
       <li><router-link to="CreateTask">Create Task</router-link></li>
     </div>
     </ul>
