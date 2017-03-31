@@ -16,9 +16,6 @@
                         </fieldset>
 
                     
-                    <p>
-                        {{taskText}}
-                    </p>
                     <transition name="fade">
                         <button class="btn btn-default glyphicon glyphicon-plus" @click="createTask()" v-if="currentEdit === -1 && this.taskText.length > 0" ></button>
                     </transition>
@@ -35,21 +32,14 @@
             <div >
                 <ul class="view-task list-group">
                     <transition-group name="fade">
-                        <li class="list-group-item" v-for="(task,index) in userTasks" :key="index">
+                        <li class="list-group-item" v-for="(task,index) in userTasks" :key="task._id">
                             
-                            <button class="btn btn-default glyphicon glyphicon-trash" @click="deleteTask(index)"></button>
+                            <button class="btn btn-default glyphicon glyphicon-trash" @click="deleteTask(task)"></button>
                             <button class="btn btn-default glyphicon glyphicon-pencil" @click="editTask(index)"></button>
-                            {{task}}
+                            {{task.taskText}}
                         </li>
                     </transition-group>
                 </ul>
-                <button v-on:click="show = !show">
-    Toggle
-  </button>
-  <transition name="fade">
-    <p v-if="show">hello</p>
-  </transition>
-
             </div>
 
         </div>
@@ -72,66 +62,107 @@ export default {
       userTasks: [],
       currentEdit: -1,
       textBeforeEdit: '',
-      show: true
-      /*
-      postData: {
-          url: 'http://127.0.0.1:3000/api/createTask',
-          params:{id:id},
-          //config: { headers: { Authorization: 'Bearer ' + window.sessionStorage.accessToken}}
-
-      } */
+      show: true,
+      
     }
   },
   methods: {
 
-    submitEdit(indexInsert) {
-        console.log(indexInsert);
-        this.currentEdit = -1;
-        this.userTasks.splice(indexInsert, 0, this.taskText);
-        if(this.textBeforeEdit.length > 0) {
+        submitEdit(indexInsert) {
+            console.log(indexInsert);
+            this.currentEdit = -1;
+            this.userTasks.splice(indexInsert, 0, this.taskText);
+            if(this.textBeforeEdit.length > 0) {
+                this.taskText = this.textBeforeEdit;
+            } else {
+                this.taskText = '';
+            }
+        },
+
+        editTask(index) {
+            console.log(index);
+            this.textBeforeEdit = this.taskText;
+            this.taskText = this.userTasks[index].taskText;
+            this.currentEdit = index;
+            console.log(this.currentEdit);
+        },
+
+        cancelEdit() {
             this.taskText = this.textBeforeEdit;
-        } else {
-            this.taskText = '';
-        }
-    },
-
-    editTask(index) {
-        console.log(index);
-        this.textBeforeEdit = this.taskText;
-        this.taskText = this.userTasks[index];
-        this.currentEdit = index;
-        console.log(this.currentEdit);
-    },
-
-    cancelEdit() {
-        this.taskText = this.textBeforeEdit;
-        this.currentEdit = -1;
-    },
-    
-    deleteTask(index) {
-        console.log(index);
-        this.userTasks.splice(index, 1);
-
-        //api call to delete task
-    },
-
-    createTask () {
-        var vm = this;
-        this.userTasks.push(vm.taskText);
-        this.taskText = '';
-        this.textBeforeEdit = '';
+            this.currentEdit = -1;
+        },
         
-        console.log(this.taskText);
+        deleteTask(task) {
+            var vm = this;
+            //console.log(task);
 
-        /*
-        this.axios.post('http://127.0.0.1:3000/createtask',vm.taskText)
+            //var taskIndex = this.userTasks.indexOf(task);
+
+            //this.userTasks.splice(this.userTasks.indexOf(task),1); 
+
+            const config = {
+            method: 'post',
+            url: 'http://127.0.0.1:3000/api/deleteTask',
+            data:{'_id': task._id}
+            //config: { headers: { Authorization: 'Bearer ' + window.sessionStorage.accessToken}}
+            }
+
+            this.axios(config)
+            .then(function (response) {
+                console.log(response);
+                vm.userTasks.splice(vm.userTasks.indexOf(task),1); 
+                
+            }).catch(function(error) {
+                console.log(error);
+            });
+            
+            
+            //this.userTasks.splice(index, 1);
+            
+
+            //api call to delete task
+        },
+
+        createTask () {
+            var vm = this;
+
+            const config = {
+            method: 'post',
+            url: 'http://127.0.0.1:3000/api/createTask',
+            data:{username:'beans', project: '1', taskText: this.taskText}
+            //config: { headers: { Authorization: 'Bearer ' + window.sessionStorage.accessToken}}
+            }
+            
+            this.axios(config)
+            .then(function (response) {
+                console.log(response);
+                vm.userTasks.push(response.data);
+                vm.taskText = '';
+                vm.textBeforeEdit = '';
+            })
+            .catch(function (error) {
+                console.log(error);
+            }); 
+        },
+        getTask() {
+        var vm = this;
+        const config = {method: 'get',
+                        url:'http://127.0.0.1:3000/api/getUserTasks',
+                        //headers: this.jwtAuthHeader
+                        //supposed to be a get request when we have the auth setup
+                        }
+        this.axios(config)
         .then(function (response) {
             console.log(response);
-        })
-        .catch(function (error) {
+            vm.userTasks = response.data;
+        }).catch(function(error) {
             console.log(error);
-        }); */
+        });
         }
+    },
+
+    beforeMount() {
+         this.getTask();
     }
 }
 
