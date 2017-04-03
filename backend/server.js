@@ -5,6 +5,9 @@ const MongoClient = require('mongodb'),
 const cors = require('cors');
 const config= require('./config');
 const bcrypt = require('bcrypt');
+const jwt             = require('jsonwebtoken')
+const jwtChecker      = require('express-jwt')
+const jwtDecode       = require('jwt-decode')
 const saltRounds = 10;
 
 const app = express();
@@ -13,6 +16,22 @@ const app = express();
 app.use(bodyParser());
 app.use(bodyParser.urlencoded({extended: true})); 
 app.use(cors());
+
+var jwtCheck = jwtChecker({
+  secret: config.secret,
+  getToken:
+    function fromHeaderOrQuerystring (req) {
+        if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
+            console.log(req.headers.authorization.split(' ')[1])
+            return req.headers.authorization.split(' ')[1];
+        } else if (req.query && req.query.token) {
+        return req.query.token;
+        }
+        return null;
+    } 
+});
+
+app.use('/api/protected', jwtCheck);
 
 //connect to mongodb if errors raise errors, if not start the app 
 MongoClient.connect(config.dburl, (err, database) => {
@@ -55,18 +74,6 @@ app.post('/api/createTask', (req, res)=> {
         }
         
     })
-
-    //console.log(req.body);
-    //var task = req.body; // should contain taskContent, can have due date, editedDatatime, 
-    //createdByUser, can have a project attached, can contain subTaskIDs
-
-    /*
-    task.taskDone = false;
-    post_collection.save(task, (err,result)=> {
-        if (err) return console.log(err);
-        console.log('saved to database')
-        res.send("Success");
-  }); */
 
 });
 

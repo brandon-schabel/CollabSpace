@@ -69,6 +69,26 @@ export default {
   methods: {
 
         submitEdit(indexInsert) {
+            /*
+            var vm = this; 
+
+            const config = {
+            method: 'post',
+            url: 'http://127.0.0.1:3000/api/deleteTask',
+            data:{'_id': task._id}
+            //config: { headers: { Authorization: 'Bearer ' + window.sessionStorage.accessToken}}
+            }
+
+            this.axios(config)
+            .then(function (response) {
+                console.log(response);
+                vm.userTasks.splice(vm.userTasks.indexOf(task),1); 
+                
+            }).catch(function(error) {
+                console.log(error);
+            });
+            */
+
             console.log(indexInsert);
             this.currentEdit = -1;
             this.userTasks.splice(indexInsert, 0, this.taskText);
