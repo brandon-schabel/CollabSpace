@@ -33,6 +33,6 @@ export default {
 }
 </script>
 
-<style scoped src="./leftNavStyle.css">
+<style scoped src="./LeftNavStyle.css">
 
 </style>
