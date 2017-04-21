@@ -55,6 +55,7 @@ export default {
 
     /* eslint-disable */
   name: 'CreateTask',
+  props: ['projectID'],
   data () {
     return {
       taskText: '',
