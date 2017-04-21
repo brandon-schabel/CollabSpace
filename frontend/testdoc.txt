@@ -1,0 +1,6 @@
+<<<<<<< HEAD
+This is just a simple test. -Tori
+=======
+This is test 3.
+This is test 4.
+>>>>>>> refs/remotes/origin/master

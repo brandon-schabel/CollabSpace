@@ -1,0 +1,29 @@
+.panel {
+    color: #FFFFFF;
+}
+
+.panel-heading {
+    background-color: #616161;
+    color: #FFFFFF
+}
+
+.login-panel {
+    background-color: #616161;
+}
+
+input {
+    background-color: #212121;
+    color: #FFFFFF;
+}
+
+.panel,
+input,
+.panel-heading {
+    border: none;
+}
+
+.btn {
+    background-color: #212121;
+    border: none;
+    color: #FFFFFF;
+}

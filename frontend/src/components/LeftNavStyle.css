@@ -1,0 +1,37 @@
+body,html {
+  height: 100%;
+}
+
+.navbar-fixed-left {
+    position:fixed;
+    height: 100%!important;
+    width: 15%;
+}
+
+.navbar-fixed-left .navbar-nav>li {
+    width: 100%;
+}
+
+
+/* On using dropdown menu (To right shift popuped) */
+
+.navbar-fixed-left .navbar-nav>li>.dropdown-menu {
+    margin-top: -50px;
+    margin-left: 140px;
+}
+
+#new-project-btn {}
+
+
+/*
+.btn {
+    background-color: #424242;
+    border: none;
+    color: #FFFFFF;
+}
+
+.btn:hover {
+    background-color: #FFFFFF;
+    color: #FFFFFF
+}
+*/

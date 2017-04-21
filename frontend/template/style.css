@@ -1,0 +1,58 @@
+.navbar-fixed-left {
+    width: 240px;
+    position: fixed;
+    border-radius: 0;
+    height: 100%;
+}
+
+.navbar-fixed-left .navbar-nav>li {
+    width: 230px;
+}
+
+.navbar-fixed-left+.container {
+    padding-left: 160px;
+}
+
+
+/* On using dropdown menu (To right shift popuped) */
+
+.navbar-fixed-left .navbar-nav>li>.dropdown-menu {
+    margin-top: -50px;
+    margin-left: 140px;
+}
+
+#new-project-btn {}
+
+#top-nav {
+    margin-left: 240px;
+    -webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 8px 6px -6px #999;
+}
+
+#search-bar {
+    margin-right: 550px;
+    margin-left: 550px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+/*SEARCH FORM*/
+
+.search-form {
+    border-radius: 30px 0px 0px 30px;
+}
+
+.search-btn {
+    border-radius: 0px 30px 30px 0px;
+    cursor: pointer;
+}
+
+.dashboard {
+    background-color: #F4F5F7;
+}
+
+h1 {
+    margin-left: 560px;
+}
