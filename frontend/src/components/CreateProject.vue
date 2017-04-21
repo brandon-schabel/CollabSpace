@@ -113,6 +113,8 @@ export default {
         },
         
         deleteProject(project) {
+            this.taskText = this.textBeforeEdit;
+            this.currentEdit = -1;
             var vm = this;
             //console.log(task);
 
@@ -142,7 +144,7 @@ export default {
 
             //api call to delete task
         },
-
+        
         createProject () {
             var vm = this;
 
